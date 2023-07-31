@@ -1,13 +1,129 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8" />
-		<title>jump page</title>
+  <head>
+    <meta charset="utf-8" />
+    <title>jump page</title>
+    <style>
+        *{padding:0;margin:0;}
+        html, body{ margin:0; padding:0; height: 100%; display: relative; }
+        li{ list-style: none;}
+        a { text-decoration: none; color: inherit;}
 
-	</head>
-	<body>
-		<script>
-			window.location.replace("http://118.89.101.106/");
-		</script>
-	</body>
+
+        #title{
+          width: 100%;
+          height: 10vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        #title span{
+          width: 30vw;
+          font-size: 2em;
+          text-align: center;
+        }
+        #list{
+          height: 90vh;
+          box-sizing: border-box;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        #list ul{
+          background: #f1f1f1;
+          width: 60%;
+          height: 60vh;
+          border-radius: 12px;
+          padding: 15px 20px;
+          box-sizing: border-box;
+          box-shadow: 8px 8px 5px 3px #3f3f3f, 15px 15px 5px 3px #f3f3f3;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          flex-direction: column;
+        }
+        #list ul li{
+          padding: 10px 20px;
+          box-sizing: border-box;
+          width: 50%;
+          display: flex;
+        }
+
+        #list ul li a{
+          display: inline-block;
+          font-size: 2em;
+          color: #3f3f3f;
+          &:hover{
+            box-sizing: border-box;
+            animation: test .2s ease forwards;
+          }
+          &::before{
+            content: '';
+            display: inline-block;
+            background-image: url(./img/icons/fly_icon_no.svg);
+            background-size: cover;
+            width: 1em;
+            height: 1em;
+            margin-right: .3em;
+            box-sizing: border-box;
+          }
+        }
+
+        @keyframes test{
+          from {
+            color: none;
+            border: none;
+            padding: 0;
+            box-shadow: none;
+            background: none;
+          }
+          to {
+            color: #eee;
+            border-radius: 8px;
+            padding: 5px 3px;
+            box-shadow: 3px 3px 2px 1px red, 2px 2px 1px 0.5px blue, inset 2px 2px 1px 1px #4f4f4f;
+            background: #3f3f3f;
+          }
+        }
+
+    </style>
+
+  </head>
+  <body>
+    <div id="title">
+      <span>Python 知识点</span>
+    </div>
+    <div id="list"></div>
+    <script>
+      addList = document.getElementById("list");
+      var url_dic = {
+        "Day1":"http://118.89.101.106/?p=109",
+        "Day2":"http://118.89.101.106/?p=148",
+        "Day3":"#",
+        "Day4":"#",
+        "Day5":"#",
+        "Day6":"#",
+        "Day7":"#"
+      };
+
+      var add_string = "";
+      add_string = add_string + "<ul>";
+
+      var flag = 1;
+
+      for (var key in url_dic){
+        add_string += '<li>';
+        add_string += flag==1?'<a href="' + url_dic[key] + '" style="flex: ' + 1 + '">' + key + '</a>':'<span style="flex:' + 2 + '">' + '</span>';
+        add_string += flag==2?'<a href="' + url_dic[key] + '" style="flex: ' + 2 + '">' + key + '</a>':'<span style="flex:' + 2 + '">' + '</span>';
+        add_string += '</li>';
+
+        flag = flag==1?2:1;
+
+      }
+
+      add_string = add_string + "</ul>";
+      addList.innerHTML = add_string;
+
+    </script>
+  </body>
 </html>
