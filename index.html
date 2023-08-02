@@ -2,6 +2,8 @@
 <html lang="zh">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>jump page</title>
     <style>
           *{padding:0;margin:0;}
@@ -9,13 +11,14 @@
           li{ list-style: none;}
           a { text-decoration: none; color: inherit;}
 
-          @media screen and (max-device-width:767px) and (max-width:767px){
+          @media screen and (max-width:767px){
             body{
               font-size: 28px;
             }
             #list ul{
-              flex-wrap: nowrap;
+              width: 100%;
               flex-direction: column;
+              flex-wrap: nowrap;
             }
             #list ul li{
               width: 100%;
@@ -26,20 +29,31 @@
           }
           @media screen and (min-width:768px) and (max-width:1023px) {
             body{
-              font-size: 20px;
+              font-size: 28px;
             }
             #list ul{
+              flex-direction: row;
               flex-wrap: wrap;
+            }
+            #list ul li{
+              box-sizing: border-box;
+              width: 50%;
+              
             }
           }
           @media screen and (min-width:1024px){
             body{
-              font-size: 24px;
+              font-size: 30px;
             }
 
             #list ul{
               flex-wrap: wrap;
             }
+          }
+
+          body{
+            background-image: url(./img/bk1.png);
+            background-size: cover;
           }
 
           #title{
@@ -52,21 +66,20 @@
           #title span{
             font-size: 2em;
             font-weight: 700;
-            color: #3f3f3f;
+            color: #;
           }
 
           #list{
             width: 100%;
             display: flex;
             justify-content: center;
-            padding-top: 15px;
+            padding-top: 10%;
             box-sizing: border-box;
           }
           #list ul{
             width: 50%;
             min-width: 400px;
             display: flex;
-            justify-content: center;
             align-items: center;
           }
           #list ul li{
@@ -75,7 +88,7 @@
           #list ul li a{
             display: inline-block;
             text-align: center;
-            font-size: 1em;
+            font-size: 1.2em;
             background-color: #e3e3e3;
             padding: 10px 15px;
             box-sizing: border-box;
@@ -98,9 +111,10 @@
     <div id="title">
       <span>Python 知识点</span>
     </div>
+    <div id="info"></div>
     <div id="list"></div>
     <script>
-      addList = document.getElementById("list");
+      var addList = document.getElementById("list");
       var url_dic = {
         "Day1":"http://118.89.101.106/?p=109",
         "Day2":"http://118.89.101.106/?p=148",
@@ -111,23 +125,55 @@
         "Day7":"#"
       };
 
+      /*
       var add_string = "";
       add_string = add_string + "<ul>";
+      */
+      var create_ul = document.createElement("ul");
+
+      console.log('测试点1');
 
       var flag = 1;
 
       for (var key in url_dic){
+        var create_li = document.createElement("li");
+        var create_a = document.createElement("a");
+        create_a.href= url_dic[key];
+        create_a.style.flex = 1;
+        create_a.textContent = key;
+        var create_span = document.createElement("span");
+        create_span.style.flex = 2;
+
+        create_li.appendChild(create_a);
+        create_li.appendChild(create_span);
+
+        create_ul.appendChild(create_li);
+        
+
+        /*
         add_string += '<li>';
         add_string += flag==1?'<a href="' + url_dic[key] + '" style="flex: ' + 1 + '">' + key + '</a>':'<span style="flex:' + 2 + '">' + '</span>';
         add_string += flag==2?'<a href="' + url_dic[key] + '" style="flex: ' + 1 + '">' + key + '</a>':'<span style="flex:' + 2 + '">' + '</span>';
         add_string += '</li>';
+        */
 
         flag = flag==1?2:1;
 
       }
 
+      addList.appendChild(create_ul);
+
+      /*
       add_string = add_string + "</ul>";
       addList.innerHTML = add_string;
+
+      create_div_Ninfo = document.createElement("div");
+      create_div_Ninfo.style = "width: 100%;height: 20px;background:#eee";
+      create_div_Ninfo.class = "info";
+      create_div_Ninfo.innerHTML("new part");
+      tag_div = document.getElementByTagName("body");
+      tag_div.appendChild(create_div_Ninfo);
+      */
 
     </script>
   </body>
