@@ -22,6 +22,8 @@
             }
             #list ul li{
               width: 100%;
+              display: flex;
+              justify-content: center;
               & a{
                 width: 100%;
               }
@@ -149,11 +151,15 @@
         create_a.href= url_dic[key];
         create_a.style.flex = 1;
         create_a.textContent = key;
+        /*
         var create_span = document.createElement("span");
         create_span.style.flex = 2;
+        */
 
         create_li.appendChild(create_a);
+        /*
         create_li.appendChild(create_span);
+        */
 
         create_ul.appendChild(create_li);
         
