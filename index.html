@@ -24,9 +24,9 @@
               width: 100%;
               display: flex;
               justify-content: center;
-              & a{
-                width: 100%;
-              }
+            }
+            #list ul li a{
+              width: 100%;
             }
           }
           @media screen and (min-width:768px) and (max-width:1023px) {
@@ -101,14 +101,14 @@
             box-sizing: border-box;
             border-radius: 15px;
 
-            &::before{
-              content: '';
-              display: inline-block;
-              width: 1em;
-              height: 1em;
-              background-image: url(./img/icons/fly_icon_no.svg);
-              background-size: contain;
             }
+          #list ul li a::before{
+            content: '';
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+            background-image: url(./img/icons/fly_icon_no.svg);
+            background-size: contain;
           }
 
     </style>
